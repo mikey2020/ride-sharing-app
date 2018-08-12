@@ -1,9 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![Build Status](https://travis-ci.org/mikey2020/ride-sharing-app.svg?branch=develop)](https://travis-ci.org/mikey2020/ride-sharing-app)
 
-Things you may want to cover:
+Ride Sharing Application
 
 * Ruby version
 

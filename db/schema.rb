@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180812164737) do
+ActiveRecord::Schema.define(version: 20180813132452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "areas", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "interests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "ride_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ride_id"], name: "index_interests_on_ride_id"
@@ -30,6 +38,15 @@ ActiveRecord::Schema.define(version: 20180812164737) do
     t.integer "seats_available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_areas", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "area_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_user_areas_on_area_id"
+    t.index ["user_id"], name: "index_user_areas_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
