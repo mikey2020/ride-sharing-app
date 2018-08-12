@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :interests
+  has_many :user_areas
+  has_many :areas, through: :user_areas
   has_many :rides, through: :interests
   has_secure_password
   validates :username, uniqueness: true, presence: true
