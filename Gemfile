@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'dotenv-rails'
 gem 'pg', '~> 0.20'
+gem 'devise'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -41,6 +42,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.4'
+  gem 'pry'
 end
 
 group :development do
@@ -52,6 +54,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop'
   gem 'rubocop-airbnb'
+  gem 'mailcatcher'
 end
 
 group :test do
