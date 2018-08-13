@@ -3,11 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   it { should validate_presence_of(:username) }
 
-  it { should have_secure_password }
-
   it { should validate_uniqueness_of(:username) }
-
-  it { should validate_uniqueness_of(:email) }
 
   it do
     should allow_value('test@gmail.com').
