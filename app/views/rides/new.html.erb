@@ -1,0 +1,43 @@
+<div class="row">
+  <h2 class="ride-form-header col s6 push-s3"> Add a new ride </h2>
+   <div class="col s7 push-s2 ride-form">
+        <% unless @errors.nil? %>
+            <% @errors.each do |key,value|%>
+                <p class="error-message black"> <%= key %> <%= value[0] %> </p>
+            <% end %>
+        <% end %>
+
+        <%= form_tag({controller: "rides", action: "create"}, method: "post") do %> 
+
+            <div class="input-field col s8 push-s2">
+                <%= label_tag(:origin, "Origin") %>
+                <%= text_field(:ride, :origin) %>
+            </div>
+            
+            <div class="input-field col s8 push-s2">
+                <%= label_tag(:origin, "Destination") %>
+                <%= text_field(:ride, :destination) %>
+            </div>
+
+            <div class="input-field col s8 push-s2">
+                <%= label_tag(:origin, "Number of seats") %>
+                <%= text_field(:ride, :seats_available) %>
+            </div>
+            
+            <div class="input-field col s8 push-s2">
+                <%= label_tag(:origin, "Take Off") %>
+                <%= time_field(:ride, :take_off) %>
+            </div>
+
+            <div class="input-field col s8 push-s2">
+                <%= select_tag(:ride_type, options_for_select([['offer', 0], ['request', 1]], 2)) %>
+                <label>Ride Type</label>
+            </div>
+
+            
+            <div class="input-field col s7 push-s4">
+                <%= submit_tag("Post", class: 'btn deep-purple lighten-5') %>
+            </div>
+        <% end %>
+    </div>
+</div>
