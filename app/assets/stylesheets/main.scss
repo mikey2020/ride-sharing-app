@@ -1,0 +1,57 @@
+body {
+    background-color: #212121;
+    color: white;
+}
+
+nav{
+    .brand-logo{
+        font-family: 'Pacifico', cursive;
+    }
+    .btn{
+        color: #000000;
+    }
+}
+
+.welcome-page{
+    p{
+        font-size: 20px;
+    }
+}
+
+%form-styles{
+    background-color: white;
+    // border: solid #673ab7 5px;
+    border-radius: 20px;
+
+    .row{
+        padding: 30px;
+    }
+
+    .btn{
+        color: #000000;
+    }
+}
+
+.signup-form{
+    @extend %form-styles;
+}
+
+.ride-form{
+    @extend %form-styles;
+
+    form{
+        padding: 30px;
+    }
+}
+
+#error_explanation{
+    color: #000000;
+    h2{
+        font-size: 10px;
+    }
+}
+
+.ride-form-header{
+    padding-bottom: 20px !important;
+    padding-left: 67px !important;
+}

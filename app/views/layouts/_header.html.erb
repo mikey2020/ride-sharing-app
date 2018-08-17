@@ -1,0 +1,15 @@
+<nav class="deep-purple navbar">
+    <div class="nav-wrapper">
+    <a href="/welcome/index" class="brand-logo">Ride Share</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+    <% if user_signed_in? %>
+        <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'btn deep-purple lighten-5' %> </li>
+        <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn deep-purple lighten-5'  %></li>
+    <% else %>
+        <li><%= link_to "Sign up", new_user_registration_path, :class => 'btn deep-purple lighten-5'  %></li>
+        <li><%= link_to "Login", new_user_session_path, :class => 'btn deep-purple lighten-5'  %></li>
+    <% end %>
+    </ul>
+    </div>
+</nav>
+    
