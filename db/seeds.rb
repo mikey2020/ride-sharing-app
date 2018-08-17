@@ -5,3 +5,31 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require_relative '../app/models/area.rb'
+
+LGAS = [
+    'Alimosho',
+    'Ajeromi-Ifelodun',
+    'Kosofe',
+    'Mushin',
+    'Oshodi-Isolo',
+    'Ojo',
+    'Ikorodu',
+    'Surulere',
+    'Agege',
+    'Ifako-Ijaiye',
+    'Shomolu',
+    'Amuwo-Odofin',
+    'Lagos Mainland',
+    'Ikeja Eti-Osa',
+    'Badagry',
+    'Apapa',
+    'Lagos Island',
+    'Ibeju-Lekki',
+    'Epe'	
+]
+
+LGAS.each do |area_name|
+    Area.create(name: area_name)
+end
