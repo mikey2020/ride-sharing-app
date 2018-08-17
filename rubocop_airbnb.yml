@@ -1,5 +1,0 @@
-Rails:
-  Enabled: false
-
-require:
-  - rubocop-airbnb

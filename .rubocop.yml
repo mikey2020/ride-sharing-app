@@ -1,8 +1,0 @@
-inherit_from:
-  - ./rubocop_airbnb.yml
-AllCops:
-  Exclude:
-    - 'test/**/*'
-    - 'config/**/*'
-    - 'db/**/*'
-    - 'bin/**'
