@@ -6,6 +6,7 @@ class CreateRides < ActiveRecord::Migration[5.1]
       t.integer :ride_type
       t.datetime :take_off
       t.integer :seats_available
+      t.belongs_to :user, index: true
 
       t.timestamps
     end

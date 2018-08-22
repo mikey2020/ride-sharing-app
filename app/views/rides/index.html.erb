@@ -1,0 +1,55 @@
+<div class="rides">
+   <center> <h3> Feeds </h3> </center>
+    <ul class="collection">
+       <div class="row">
+        <% @rides.each do |ride| %>
+            <li class="collection-item avatar">
+               <div class="ride black-text">
+                  <span class="ride-type col s12"> 
+                   <center> Ride <%= ride.ride_type %> </center>
+                  </span>
+                  <span class="path col s6"> 
+                    <%= ride.origin.capitalize %> to <%= ride.destination.capitalize %>
+                  </span>
+                  <span class="seats col s5">
+                    <%= ride.seats_available %> seats available 
+                  </span>
+                  <span class="take-off col s7">
+                    Takes off by <%= ride.take_off.strftime("%I:%M%p") %>
+                  </span>
+                  <% if current_user.id == ride.user.id %>
+                    <span 
+                    onclick="myFunction()" 
+                    id="interest-btn" 
+                    class="grey darken-4 interest-btn btn-flat col s7 pull-s1"
+                    >
+                      <%= link_to 'Edit Ride', edit_ride_path(ride) %>
+                    </span>
+
+                    <span 
+                    onclick="myFunction()"
+                    id="interest-btn" 
+                    class="grey darken-4 interest-btn btn-flat col s7"
+                    >
+                    <%= link_to 'Delete Ride', ride_path(ride),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } 
+                    %>
+                    </span>
+
+                  <% elsif ride.users.ids.include? current_user.id %>
+                  <% else %>
+                    <span 
+                    onclick="myFunction()" 
+                    id="interest-btn" 
+                    class="grey darken-4 interest-btn btn-flat col s7 pull-s1"
+                    >
+                       <%= link_to 'Show Interest', ride_path(ride), :method=> :patch %>
+                    </span>
+                  <% end %>
+               </div>
+            </li>
+        <% end %>
+        </div>
+    </ul>
+</div>

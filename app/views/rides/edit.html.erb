@@ -1,0 +1,51 @@
+<div class="row">
+  <h2 class="ride-form-header col s6 push-s3"> Edit ride </h2>
+   <div class="col s7 push-s2 ride-form">
+        <%= form_with(model: @ride, local: true, method: "put") do |form| %>
+ 
+            <% if @ride.errors.any? %>
+                <div id="error_explanation">
+                    <h2>
+                    <%= pluralize(@ride.errors.count, "error") %> prohibited
+                    this ride from being updated:
+                    </h2>
+                    <ul>
+                    <% @ride.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                    </ul>
+                </div>
+            <% end %>
+
+            <div class="input-field col s8 push-s2">
+                <%= form.label :origin  %><br>
+                <%= form.text_field :origin %>
+            </div>
+            
+            <div class="input-field col s8 push-s2">
+                <%= form.label :destination %><br>
+                <%= form.text_field :destination %>
+            </div>
+
+            <div class="input-field col s8 push-s2">
+                <%= form.label :seats_available %><br>
+                <%= form.text_field :seats_available %>
+            </div>
+            
+            <div class="input-field col s8 push-s2">
+                <%= form.label :seats_available %><br>
+                <%= time_field(:ride, :take_off) %>
+            </div>
+
+            <div class="input-field col s8 push-s2">
+                <%= form.label :ride_type %><br>
+                <%= select_tag(:ride_type, options_for_select([['offer', 0], ['request', 1]], 2)) %>
+            </div>
+
+            
+            <div class="input-field col s7 push-s4">
+                <%= submit_tag("Post", class: 'btn deep-purple lighten-5') %>
+            </div>
+        <% end %>
+    </div>
+</div>

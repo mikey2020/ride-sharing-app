@@ -55,3 +55,40 @@ nav{
     padding-bottom: 20px !important;
     padding-left: 67px !important;
 }
+
+.rides{
+    .collection{
+        .collection-item.avatar{
+            min-height: 168px !important;
+            padding: 18px;
+        }
+    }
+}
+
+.ride{
+    .path{
+        font-size: 50px !important;
+        padding-bottom: 30px !important;
+    }
+
+    .ride-type{
+        font-size: 40px;
+        padding-bottom: 30px !important;
+    }
+    
+    .take-off{
+        font-size: 18px;
+    }
+
+    .seats{
+        font-size: 32px;
+    }
+
+    .interest-btn{
+        font-size: 20px !important;
+        width: 15% !important;
+        a{
+            color: white !important;
+        }
+    }
+}

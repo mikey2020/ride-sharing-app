@@ -54,7 +54,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop'
   gem 'rubocop-airbnb'
-  gem 'mailcatcher'
 end
 
 group :test do

@@ -36,8 +36,10 @@ ActiveRecord::Schema.define(version: 20180813142448) do
     t.integer "ride_type"
     t.datetime "take_off"
     t.integer "seats_available"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_rides_on_user_id"
   end
 
   create_table "user_areas", force: :cascade do |t|
