@@ -31,7 +31,7 @@
 
             <div class="input-field col s8 push-s2">
                 <%= select_tag(:ride_type, options_for_select([['offer', 0], ['request', 1]], 2)) %>
-                <label>Ride Type</label>
+                <%= label_tag(:origin, "Ride Type") %>
             </div>
 
             

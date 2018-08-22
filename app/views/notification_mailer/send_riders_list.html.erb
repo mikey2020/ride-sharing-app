@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style type="text/css" rel="stylesheet" media="all">
+        table, th, td {
+            border: 1px solid black;
+        }
+        table {
+            border-spacing: 5px;
+        }
+        table#t01 {
+            width: 100%; 
+            background-color: #f1f1c1;
+        }
+        table#t01 tr:nth-child(even) {
+            background-color: #eee;
+        }
+        table#t01 tr:nth-child(odd) {
+            background-color: #fff;
+        }
+        table#t01 th {
+            color: white;
+            background-color: black;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Hi, <%= @user.username %></h1>
+    <h3> These are your fellow riders </h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @users.each do |user| %>
+            <tr>
+                <td> <%= user[:username] %> </td>
+                <td> <%= user[:email] %> </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table> 
+  </body>
+</html>
