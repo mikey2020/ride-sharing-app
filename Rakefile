@@ -2,16 +2,18 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 require 'rubygems'
 require 'rake'
-require 'rspec/core/rake_task'
-require 'coveralls/rake/task'
-
 require_relative 'config/application'
 
 Rails.application.load_tasks
-
-desc 'Run RSpec'
-RSpec::Core::RakeTask.new do |t|
-  t.verbose = false
+begin
+  require 'rspec/core/rake_task'
+  require 'coveralls/rake/task'
+  desc 'Run RSpec'
+  RSpec::Core::RakeTask.new do |t|
+    t.verbose = false
+  end
+  Coveralls::RakeTask.new
+rescue LoadError
 end
 task default: :spec
-Coveralls::RakeTask.new
+
