@@ -1,18 +1,11 @@
 class RidesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    if user_signed_in?
-      @rides = Ride.order(:created_at).where("seats_available > ?", 0)
-    else
-      redirect_to '/users/sign_in'
-    end
+    @rides = Ride.order(:created_at).where("seats_available > ?", 0)
   end
 
   def new
-    if user_signed_in?
-      render "new"
-    else
-      redirect_to "/users/sign_in"
-    end
   end
 
   def edit
@@ -22,13 +15,13 @@ class RidesController < ApplicationController
   def create
     @ride = Ride.new(ride_params)
     @ride.ride_type = params[:ride_type].to_i
-    @ride.user_id = current_user.id
+    @ride.user_id = current_user.id || 0
     if @ride.save
       flash[:notice] = "Ride posted successfully"
       redirect_to "/rides/"
     else
       @errors = @ride.errors.messages
-      render "new"
+      render "new", status: 400
     end
   end
 
@@ -62,7 +55,7 @@ class RidesController < ApplicationController
   def destroy
     @ride = Ride.find(params[:id])
     @ride.destroy
-    
+
     users = get_user_details(@ride.users)
     if @ride.users != []
       NotificationMailer.with(ride: @ride, users: users).notify_users.deliver_later
