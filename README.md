@@ -1,6 +1,6 @@
 # README
 
-[![Build Status](https://travis-ci.org/mikey2020/ride-sharing-app.svg?branch=develop)](https://travis-ci.org/mikey2020/ride-sharing-app)
+[![Build Status](https://travis-ci.org/mikey2020/ride-sharing-app.svg?branch=develop)](https://travis-ci.org/mikey2020/ride-sharing-app) [![Coverage Status](https://coveralls.io/repos/github/mikey2020/ride-sharing-app/badge.svg?branch=develop)](https://coveralls.io/github/mikey2020/ride-sharing-app?branch=develop)
 
 Ride Sharing Application
 
