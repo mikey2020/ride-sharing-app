@@ -1,4 +1,6 @@
 class RidesController < ApplicationController
+  include RidesHelper
+
   before_action :authenticate_user!
 
   def index
@@ -15,7 +17,7 @@ class RidesController < ApplicationController
   def create
     @ride = Ride.new(ride_params)
     @ride.ride_type = params[:ride_type].to_i
-    @ride.user_id = current_user.id || 0
+    @ride.user_id = current_user.id
     if @ride.save
       flash[:notice] = "Ride posted successfully"
       redirect_to "/rides/"
@@ -27,28 +29,9 @@ class RidesController < ApplicationController
 
   def update
     if request.request_method == 'PATCH'
-      @ride = Ride.find(params[:id])
-      @ride.seats_available -= 1
-      if @ride.save
-        flash[:success] = "Your seat has been booked"
-        Interest.create(user_id: current_user.id, ride_id: @ride.id)
-        NotificationMailer.with(user: @ride.user, current_user: current_user).notify_email.deliver_later
-        users = get_user_details(@ride.users)
-        if @ride.seats_available == 0
-          NotificationMailer.with(user: @ride.user, users: users).send_riders_list.deliver_later
-        end
-        redirect_to '/rides/'
-      else
-        @errors = @ride.errors.messages
-        flash[:error] = @errors[0]
-      end
+      book_ride
     else
-      @ride = Ride.find(params[:id])
-      if @ride.update(ride_params)
-        redirect_to '/rides'
-      else
-        render 'edit'
-      end
+      update_ride
     end
   end
 
@@ -62,14 +45,6 @@ class RidesController < ApplicationController
     end
 
     redirect_to '/rides'
-  end
-
-  def get_user_details(users)
-    users_details = []
-    users.each do |user|
-      users_details.push({ username: user.username, email: user.email })
-    end
-    users_details
   end
 
   private

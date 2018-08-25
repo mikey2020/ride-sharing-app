@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 RSpec.describe InterestsController, type: :controller do
   let!(:user) { create(:user) }
