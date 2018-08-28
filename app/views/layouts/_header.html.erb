@@ -1,9 +1,10 @@
 <nav class="deep-purple navbar">
     <div class="nav-wrapper">
-    <a href="/rides/" class="brand-logo">Ride Share</a>
+    <a href="/rides/" class="brand-logo">RideShare</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
     <% if user_signed_in? %>
         <li> <%= link_to 'Add Ride', new_ride_path, :class => 'btn deep-purple lighten-5' %> </li>
+        <li> <%= link_to 'Interests', interests_path, :class => 'btn deep-purple lighten-5' %> </li>
         <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'btn deep-purple lighten-5' %> </li>
         <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn deep-purple lighten-5'  %></li>
     <% else %>

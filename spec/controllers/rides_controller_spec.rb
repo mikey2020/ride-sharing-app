@@ -91,12 +91,12 @@ RSpec.describe RidesController, type: :controller do
     end
   end
 
-  describe "PATCH update" do
+  describe "PUT book ride" do
     let!(:user) { create(:user) }
     let!(:ride) { create(:ride, user_id: user.id) }
 
     it "responds to html by default" do
-      patch :update, params: { id: 1 }
+      put :book_ride, params: { id: 1 }
       expect(response.content_type).to eq "text/html"
     end
 
@@ -105,7 +105,7 @@ RSpec.describe RidesController, type: :controller do
 
       user_mailer(user)
 
-      patch :update, params: { id: ride.id }
+      put :book_ride, params: { id: ride.id }
       
       expect(response.status).to eq(302)
       expect(response).to be_redirect

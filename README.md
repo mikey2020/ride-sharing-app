@@ -22,11 +22,13 @@ Ride Sharing Application
 - Run ```rails db:seed``` to seed database tables.
 - Start the server with ```rails s```
 - Then visit ```http://localhost:3000``` to view the app.
+- Run ```bundle exec rspec spec``` to run tests.
 
 ## User functions
 - You can post a ride request or offer.
 - You can edit a previously posted ride.
 - You can delete a request or offer. 
+- You can cancel your interest in a ride.
 
 ## How to Contribute
 - Fork this repository.

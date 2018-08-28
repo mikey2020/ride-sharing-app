@@ -1,7 +1,7 @@
-document.addEventListener('DOMContentLoaded', function(options) {
+var displayMaterializeSelect = function(options) {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems, options);
-});
+}
 
 function myFunction() {
     var x = document.getElementById("interest-btn");
@@ -11,3 +11,7 @@ function myFunction() {
         x.style.display = "none";
     }
 }
+
+document.addEventListener("turbolinks:load", function(options){
+    displayMaterializeSelect(options);
+});

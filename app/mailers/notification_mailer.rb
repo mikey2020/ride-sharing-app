@@ -18,4 +18,9 @@ class NotificationMailer < ApplicationMailer
       mail(to: user.email, subject: 'Ride Cancelled')
     end
   end
+
+  def notify_rider
+    @user = params[:user]
+    mail(to: @user.email, subject: 'Someone is interested in your ride')
+  end
 end

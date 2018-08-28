@@ -4,7 +4,7 @@ class RidesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @rides = Ride.order(:created_at).where("seats_available > ?", 0)
+    Ride.available_rides
   end
 
   def new
@@ -28,23 +28,37 @@ class RidesController < ApplicationController
   end
 
   def update
-    if request.request_method == 'PATCH'
-      book_ride
+    @ride = Ride.find(params[:id])
+    if @ride.update(ride_params)
+      redirect_to '/rides'
     else
-      update_ride
+      render 'edit'
     end
   end
 
   def destroy
     @ride = Ride.find(params[:id])
     @ride.destroy
-
     users = get_user_details(@ride.users)
     if @ride.users != []
       NotificationMailer.with(ride: @ride, users: users).notify_users.deliver_later
     end
-
     redirect_to '/rides'
+  end
+
+  def book_ride
+    @ride = Ride.find(params[:id])
+    @ride.seats_available -= 1
+    if @ride.save
+      Interest.create(user_id: current_user.id, ride_id: @ride.id)
+      resp_message
+      users = get_user_details(@ride.users)
+      send_riders_list_to_driver
+      redirect_to '/rides/'
+    else
+      @errors = @ride.errors.messages
+      flash[:error] = @errors[0]
+    end
   end
 
   private

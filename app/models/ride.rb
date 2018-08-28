@@ -7,4 +7,16 @@ class Ride < ApplicationRecord
   validates :destination, presence: true
   validates :take_off, presence: true
   validates :seats_available, presence: true
+
+  def display_ride_type
+    if self.ride_type == 'offer'
+      "#{self.seats_available} seats available"
+    else
+      "#{self.seats_available} seats wanted"
+    end
+  end
+
+  def self.available_rides
+    Ride.order(:created_at).where("seats_available > ?", 0)
+  end
 end

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   get 'welcome/index'
 
+  put 'rides/:id/', :to => 'rides#book_ride', as: :book_ride
+
   resources :interests
 
   resources :rides
