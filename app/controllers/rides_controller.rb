@@ -32,7 +32,7 @@ class RidesController < ApplicationController
     if @ride.update(ride_params)
       redirect_to '/rides'
     else
-      render 'edit'
+      render 'edit', status: 400
     end
   end
 
