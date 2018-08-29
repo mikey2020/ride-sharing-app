@@ -4,7 +4,7 @@ class RidesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    Ride.available_rides
+    @rides = Ride.available_rides
   end
 
   def new
