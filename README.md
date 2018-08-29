@@ -19,6 +19,7 @@ Ride Sharing Application
 - Change directory to the app's root with ```cd ride-sharing-app```
 - Pull the development branch with ```git pull origin develop```
 - Then run ```bundle install```  to install the dependencies.
+- Copy contents of ```.env-sample``` to your local ```.env```.
 - Run ```rails db:migrate``` to migrate database tables.
 - Run ```rails db:seed``` to seed database tables.
 - Start the server with ```rails s```
