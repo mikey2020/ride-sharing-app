@@ -12,6 +12,7 @@ Ride Sharing Application
  * [Rails:](https://rubyonrails.org//)
  * [Dotenv:](https://github.com/bkeepers/dotenv) Shim to load environment variables from .env into ENV in development.
  * [Pg:](https://rubygems.org/gems/pg/versions/0.18.4) Pg is the Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/]
+ * [Devise:](https://rubygems.org/gems/devise/versions/4.2.0) Flexible authentication solution for Rails with Warden[https://rubygems.org/gems/warden/versions/1.2.6]
  
 ## Installation or Configuration
 - Clone this repository to have the app on your machine with ```git clone https://github.com/mikey2020/ride-sharing-app.git```
@@ -24,7 +25,7 @@ Ride Sharing Application
 - Then visit ```http://localhost:3000``` to view the app.
 - Run ```bundle exec rspec spec``` to run tests.
 
-## User functions
+## User features
 - You can post a ride request or offer.
 - You can edit a previously posted ride.
 - You can delete a request or offer. 
