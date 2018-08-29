@@ -17,11 +17,13 @@
     <div class="actions col s8 push-s4">
       <%= f.submit "Log in", class: 'btn deep-purple lighten-5' %>
     </div>
+
+    <div class="login-links col s8">
+      <%= render "devise/shared/links" %>
+    </div>
+
   </div>
 <% end %>
 </div>
 </div>
 
-<div class="login-links">
-<%= render "devise/shared/links" %>
-</div>
