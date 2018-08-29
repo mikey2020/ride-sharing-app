@@ -89,6 +89,20 @@ RSpec.describe RidesController, type: :controller do
       expect(response.status).to eq(302)
       expect(response).to be_redirect
     end
+
+    it "should fail when values are nil" do
+      sign_in
+
+      put :update, params: {
+        id: ride.id, ride: {
+          origin: nil,
+        },
+      }
+
+      expect(response.content_type).to eq "text/html"
+      expect(response.status).to eq(400)
+      expect(response).to render_template('edit')
+    end
   end
 
   describe "PUT book ride" do
