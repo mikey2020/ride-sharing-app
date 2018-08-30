@@ -19,11 +19,11 @@ RSpec.describe Ride, type: :model do
 
   it { should have_many(:users).through(:interests) }
 
-  it "should return seats available for ride offer" do
+  it "returns seats available for ride offer" do
     expect(ride.display_ride_type).to eq('3 seats available')
   end
 
-  it "should return seats wanted for ride type" do
+  it "returns seats wanted for ride type" do
     expect(ride_req.display_ride_type).to eq('3 seats wanted')
   end
 end

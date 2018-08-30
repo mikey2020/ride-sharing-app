@@ -22,7 +22,6 @@ RSpec.describe InterestsController, type: :controller do
   end
 
   describe "DELETE destroy" do
-
     it "deletes interest from the database" do
       create(:interest, user_id: user.id, ride_id: ride.id)
       sign_in
@@ -36,11 +35,9 @@ RSpec.describe InterestsController, type: :controller do
     end
 
     it "cannot delete unknown interest" do
-
       sign_in
 
       delete :destroy, params: { id: 0 }
-
 
       expect(response).to have_http_status(404)
       expect(response.body).to include("http://test.host/interests")

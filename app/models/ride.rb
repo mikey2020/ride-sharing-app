@@ -9,10 +9,10 @@ class Ride < ApplicationRecord
   validates :seats_available, presence: true
 
   def display_ride_type
-    if self.ride_type == 'offer'
-      "#{self.seats_available} seats available"
+    if ride_type == 'offer'
+      "#{seats_available} seats available"
     else
-      "#{self.seats_available} seats wanted"
+      "#{seats_available} seats wanted"
     end
   end
 

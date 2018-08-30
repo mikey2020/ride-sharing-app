@@ -17,11 +17,7 @@ module RidesHelper
   end
 
   def no_seats_available?
-    if @ride.seats_available == 0
-      true
-    else
-      false
-    end
+    @ride.seats_available == 0
   end
 
   def send_riders_list_to_driver
