@@ -1,4 +1,4 @@
-require 'rails_helper' 
+require 'rails_helper'
 
 RSpec.describe RidesController, type: :controller do
   describe "GET index" do
@@ -51,18 +51,18 @@ RSpec.describe RidesController, type: :controller do
         origin: 'akoka',
         seats_available: 5,
         take_off: '2018-08-20 16:18:54.604809',
-        ride_type: 'offer'
-      } }
-      
+        ride_type: 'offer',
+      }, }
+
       expect(response.content_type).to eq "text/html"
       expect(response.status).to eq(302)
       expect(response).to be_redirect
     end
 
-    it "should fail with invalid params" do
+    it "fails with invalid params" do
       sign_in
 
-      post :create, :params => { :ride => { origin: ''}, }
+      post :create, :params => { :ride => { origin: '' } }
       expect(response.content_type).to eq "text/html"
       expect(response.status).to eq(400)
     end
@@ -90,7 +90,7 @@ RSpec.describe RidesController, type: :controller do
       expect(response).to be_redirect
     end
 
-    it "should fail when values are nil" do
+    it "fails when values are nil" do
       sign_in
 
       put :update, params: {
@@ -120,7 +120,7 @@ RSpec.describe RidesController, type: :controller do
       user_mailer(user)
 
       put :book_ride, params: { id: ride.id }
-      
+
       expect(response.status).to eq(302)
       expect(response).to be_redirect
     end

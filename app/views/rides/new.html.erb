@@ -21,7 +21,7 @@
 
             <div class="input-field col s8 push-s2">
                 <%= label_tag(:origin, "Number of seats") %>
-                <%= text_field(:ride, :seats_available) %>
+                <%= number_field(:ride, :seats_available, in: 1..50, step: 1) %>
             </div>
             
             <div class="input-field col s8 push-s2">

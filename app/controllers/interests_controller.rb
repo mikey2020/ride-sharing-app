@@ -12,13 +12,13 @@ class InterestsController < ApplicationController
 
   def destroy
     @interest = Interest.indicated(current_user.id, params[:id].to_i)
-    unless @interest.empty?
+    if @interest.empty?
+      flash[:error] = "Interest not found"
+      redirect_to '/interests', status: 404
+    else
       @interest[0].destroy
       update_seats_number
       redirect_to '/rides'
-    else
-      flash[:error] = "Interest not found"
-      redirect_to '/interests', status: 404
     end
   end
 end
